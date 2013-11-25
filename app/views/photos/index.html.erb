@@ -9,6 +9,21 @@
 <% end %>
 
 <% if @user.sign_in_count == 1 %>
+
+<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+
+<% @myfriendphotos.first(20).each do |p| %>
+
+    <div class="box col2">
+		<%= image_tag p.src %>
+	</div>
+
+<% end %>
+
+</div>
+
+
+
 <script type="text/javascript">
 $(document).ready(function(){
 	worker();
@@ -33,6 +48,19 @@ function worker(){
 		}
 	});	
 };
+
+$('#masonry-container').masonry({
+  itemSelector: '.box',
+  gutterWidth: 0,
+  // set columnWidth a fraction of the container width
+  columnWidth: function( containerWidth ) {
+    return 226;//containerWidth / 4;
+  }
+});
+
 });
 </script>
+
+
+
 <% end %>
