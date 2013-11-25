@@ -2,15 +2,17 @@ class PhotosController < ApplicationController
 
 	before_filter :authenticate_user!
 	
-	def create_meme
+	def new_meme
 		@user = current_user
 		@myphotos = Photo.where(uid: @user.uid)
 		@myfriendphotos = @user.photos
 		respond_to do |format|
 			if @myfriendphotos.count > 1
 				format.js { render json: "yes" }
+				format.html
 			else
 				format.js { render json: "no" }
+				format.html
 			end
 		end
 	end

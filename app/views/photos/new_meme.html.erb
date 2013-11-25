@@ -1,5 +1,7 @@
 <% if @myfriendphotos != [] %>
-Suck my dick nigga!
+	<div class="container" align="center">
+		Suck my dick nigga!
+	</div>
 <% else %>
 <div class="container" align="center">
 	<img src="/assets/loading.gif">
@@ -13,7 +15,7 @@ $(document).ready(function(){
 function worker(){
 	$.ajax({
 		type: "GET",
-		url: '/create',
+		url: '/new_meme',
 		dataType: "json",
 		complete: function(response) {
 			var contains = (window.location.href.indexOf('#loaded') > -1);

@@ -1,8 +1,14 @@
 ---
-rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
-rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
-application.js: application-90dce78cb8eed31033fb66b4ace63bdd.js
-application/index.js: application-90dce78cb8eed31033fb66b4ace63bdd.js
+NexaBold.otf: NexaBold-9e9d17c97f9f67edba67708702a81f81.otf
+NexaBold/index.otf: NexaBold-9e9d17c97f9f67edba67708702a81f81.otf
+NexaLight.otf: NexaLight-5d5c2f10317f31c9ff2fe7adacd6a4c5.otf
+NexaLight/index.otf: NexaLight-5d5c2f10317f31c9ff2fe7adacd6a4c5.otf
+loading.gif: loading-c273f7252115c9a655748bff7874ffcf.gif
+loading/index.gif: loading-c273f7252115c9a655748bff7874ffcf.gif
+meme.png: meme-ba35724b30b80e93b61cb625d02ebc81.png
+meme/index.png: meme-ba35724b30b80e93b61cb625d02ebc81.png
+application.js: application-70afea73e3defc8060207521727815ef.js
+application/index.js: application-70afea73e3defc8060207521727815ef.js
 application.css: application-c57591a7a2bf98acf739a8f473c33f50.css
 application/index.css: application-c57591a7a2bf98acf739a8f473c33f50.css
 jquery.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
