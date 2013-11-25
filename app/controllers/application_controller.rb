@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def after_sign_in_path_for(resource)
-  	create_meme_path
+  	'/new_meme'
   end
 
   def after_sign_out_path_for(resource)
