@@ -2,10 +2,14 @@ class PhotosController < ApplicationController
 
 	before_filter :authenticate_user!
 	
+
 	def index
 		@user = current_user
-		@myphotos = Photo.where(uid: @user.uid)
-		@myfriendphotos = @user.photos
+		@myfriendphotos = Rails.cache.fetch("photolist", :expires_in => 5.hours) do
+			@myphotos = Photo.where(uid: @user.uid)
+			@myfriendphotos = @user.photos.shuffle
+		end
+		
 		respond_to do |format|
 			if @myfriendphotos.count > 1
 				format.js { render json: "yes" }
