@@ -47,14 +47,14 @@ function worker(){
 
 
 <script type="text/javascript">
-$('#masonry-container').masonry({
-  itemSelector: '.box',
-  gutterWidth: 0,
-  // set columnWidth a fraction of the container width
-  columnWidth: function( containerWidth ) {
-    return 226;
-  }
-});
-
+$(document).ready(function(){
+	$('#masonry-container').masonry({
+	  itemSelector: '.box',
+	  gutterWidth: 0,
+	  // set columnWidth a fraction of the container width
+	  columnWidth: function( containerWidth ) {
+	    return 226;
+	  }
+	});
 });
 </script>
