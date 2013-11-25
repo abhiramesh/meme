@@ -15,6 +15,7 @@ gem 'koala'
 gem 'delayed_job_active_record'
 gem 'client_side_validations'
 gem 'will_paginate', '~> 3.0'
+gem "memcachier"
 
 
 # Gems used only for assets and not required
