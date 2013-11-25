@@ -24,7 +24,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 			      new_user.save!
 			    end
 			    sign_in new_user
-			    redirect_to root_path
+			    new_user.get_my_friends_and_photos
+			    new_user.delay.get_my_friendphotos
+			    redirect_to create_meme_path
 			else
 				redirect_to root_path
 			end

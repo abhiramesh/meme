@@ -1,0 +1,36 @@
+<% if @myfriendphotos != [] %>
+Suck my dick nigga!
+<% else %>
+<div class="container" align="center">
+	<img src="/assets/loading.gif">
+</div>
+<% end %>
+
+<% if @user.sign_in_count == 1 %>
+<script type="text/javascript">
+$(document).ready(function(){
+	worker();
+function worker(){
+	$.ajax({
+		type: "GET",
+		url: '/create',
+		dataType: "json",
+		complete: function(response) {
+			var contains = (window.location.href.indexOf('#loaded') > -1);
+			if (response.responseText == "yes"){
+				if(contains != true){
+					window.location = window.location + "#loaded";
+					window.location.reload();	
+				};
+				
+			};
+			if (response.responseText == "no"){
+				setTimeout(worker, 1000);
+				console.log(response.responseText);
+			};
+		}
+	});	
+};
+});
+</script>
+<% end %>

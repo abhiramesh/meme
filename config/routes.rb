@@ -1,5 +1,11 @@
 Meme::Application.routes.draw do
   
+  resources :friends
+
+
+  resources :photos
+
+
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" } do
     get '/users/auth/facebook', :to => "omniauth_callbacks#facebook", :as => "user_omniauth_authorize"
   end
@@ -11,6 +17,8 @@ Meme::Application.routes.draw do
   resources :users
 
   root :to => "static_pages#home"
+
+  get '/create', :to => "photos#create_meme", :as => "create_meme"
 
 
   # The priority is based upon order of creation:
