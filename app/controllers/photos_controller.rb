@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
 
 	before_filter :authenticate_user!
 	
-	def new_meme
+	def index
 		@user = current_user
 		@myphotos = Photo.where(uid: @user.uid)
 		@myfriendphotos = @user.photos

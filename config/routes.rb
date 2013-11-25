@@ -16,7 +16,7 @@ Meme::Application.routes.draw do
 
   root :to => "static_pages#home"
 
-  get '/new_meme', :to => "photos#new_meme"
+  get '/all_photos', :to => "photos#index"
 
 
 
