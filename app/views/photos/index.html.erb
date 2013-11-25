@@ -1,6 +1,10 @@
 <% if @myfriendphotos != [] %>
-	<div class="container" align="center">
-		<img src="<%=@myfriendphotos.sample.src%>">
+	<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+		<% @myfriendphotos.first(20).each do |p| %>
+		    <div class="box col2">
+				<%= link_to image_tag(p.src), new_meme_path(:photo_id => p.id) %>
+			</div>
+		<% end %>
 	</div>
 <% else %>
 <div class="container" align="center">
@@ -8,22 +12,12 @@
 </div>
 <% end %>
 
+
+
+
+
+
 <% if @user.sign_in_count == 1 %>
-
-<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
-
-<% @myfriendphotos.first(20).each do |p| %>
-
-    <div class="box col2">
-		<%= link_to image_tag(p.src), new_meme_path(:photo_id => p.id) %>
-	</div>
-
-<% end %>
-
-</div>
-
-
-
 <script type="text/javascript">
 $(document).ready(function(){
 	worker();
@@ -48,19 +42,19 @@ function worker(){
 		}
 	});	
 };
+</script>
+<% end %>
 
+
+<script type="text/javascript">
 $('#masonry-container').masonry({
   itemSelector: '.box',
   gutterWidth: 0,
   // set columnWidth a fraction of the container width
   columnWidth: function( containerWidth ) {
-    return 226;//containerWidth / 4;
+    return 226;
   }
 });
 
 });
 </script>
-
-
-
-<% end %>
