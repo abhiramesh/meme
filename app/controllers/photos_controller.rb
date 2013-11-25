@@ -17,4 +17,12 @@ class PhotosController < ApplicationController
 		end
 	end
 
+	def new_meme
+		@user = current_user
+		@photo = Photo.find(params[:photo_id])
+		respond_to do |format|
+			format.html
+		end
+	end
+
 end

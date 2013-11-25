@@ -18,6 +18,8 @@ Meme::Application.routes.draw do
 
   get '/all_photos', :to => "photos#index"
 
+  get '/new_meme', :to => "photos#new_meme"
+
 
 
   # The priority is based upon order of creation:

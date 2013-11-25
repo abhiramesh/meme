@@ -15,7 +15,7 @@
 <% @myfriendphotos.first(20).each do |p| %>
 
     <div class="box col2">
-		<%= image_tag p.src %>
+		<%= link_to image_tag(p.src), new_meme_path(:photo_id => p.id) %>
 	</div>
 
 <% end %>
