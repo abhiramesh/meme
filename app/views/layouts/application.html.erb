@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Meme</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css">
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <%= yield :head %>
+</head>
+<body>
+
+<%= render :partial => 'layouts/header' %>
+
+<%= yield %>
+<%= render :partial => 'layouts/footer' %>
+
+</body>
+</html>
