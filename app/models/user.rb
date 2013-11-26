@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 	
   has_many :friends, dependent: :destroy
   has_many :photos, through: :friends, dependent: :destroy
+  has_many :fmemes, dependent: :destroy
 
   def facebook
     @facebook ||= Koala::Facebook::API.new(self.oauth_token)

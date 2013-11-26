@@ -98,6 +98,7 @@ GEM
     orm_adapter (0.4.0)
     pg (0.14.1)
     polyglot (0.3.3)
+    proxies (0.2.1)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -123,6 +124,8 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    s3 (0.3.17)
+      proxies (~> 0.2.0)
     sass (3.2.12)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -166,6 +169,7 @@ DEPENDENCIES
   omniauth-facebook
   pg (= 0.14.1)
   rails (= 3.2.13)
+  s3
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
   will_paginate (~> 3.0)

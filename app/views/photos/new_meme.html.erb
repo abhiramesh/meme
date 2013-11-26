@@ -1,13 +1,33 @@
 <html>
 	<%= content_for :head do %>
+	<%= javascript_include_tag '//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js' %>
 		<script>
+		function sendData(base64){
+			$.ajax({
+				type: "POST",
+				url: '/save_meme',
+				data: { memeURL: base64, photo_id: "<%=@photo.id%>" },
+				dataType: "json",
+				complete: function(response) {
+					if (response.responseText == "error"){
+						alert("Something went wrong! Let's try again.");
+					}
+					else {
+						window.location.replace("/fmemes/" + response.responseText);
+					};
+
+				}
+			});
+		};
+
 		function saveMeme() {
 		    html2canvas($("#testdiv"), {
 		    	logging: true,
 		    	useCORS: true,
 		        onrendered: function(canvas) {
 		            var myImage = canvas.toDataURL("image/png");
-		            window.open(myImage);
+		            base64 = myImage.replace(/^data:image\/(png|jpg);base64,/, "") ;
+		            sendData(base64);
 		        }
 		    });
 		};
@@ -15,13 +35,13 @@
 	<% end %>
 <body>
 	<div class="container-fluid" align="center">
-		<div id="testdiv" class="bgmemepic">
+		<div id="testdiv">
 			<img src="<%=@photo.src%>" class="img-responsive memeimg">
 			<div class="memecontainer" align="center">
 				<div class="relativememe">
-					<%= text_area_tag "toptext", nil, :class => "memetext", rows: "2", maxlength: "30" %>
+					<%= text_area_tag "toptext", nil, :class => "memetext", placeholder: "Type a witty phrase here", rows: "2", maxlength: "30" %>
 					<br>
-					<%= text_area_tag "bottomtext", nil, :class => "memetext", rows: "2", maxlength: "30" %>
+					<%= text_area_tag "bottomtext", nil, :class => "memetext", placeholder: "And another one down here", rows: "2", maxlength: "30" %>
 				</div>
 			</div>
 		</div>
@@ -35,63 +55,45 @@
 
 
 	<script type="text/javascript">
-	$("#savebutton").click(function(){
-		saveMeme();
-	});
+		$("#savebutton").click(function(){
+			saveMeme();
+		});
+
+		// $('#toptext').popover({
+		// 	placement: 'right',
+		// 	title: "Make it hilarous!",
+		// 	container: $('#testdiv'),
+		// 	trigger: 'hover'
+		// });
+		// $('#bottomtext').popover({
+		// 	placement: 'right',
+		// 	title: "",
+		// 	container: $('#testdiv'),
+		// 	trigger: 'hover'
+		// });
 	</script>
 	<script type="text/javascript">
-	$(window).load(function(){
-		var width = $('.img-responsive').width();
-		var height = $('.img-responsive').height();
-		var memeCont = $('.memecontainer');
-		var relativememe = $('.relativememe');
-		memeCont.css('height',height);
-		memeCont.css('width',width);
-		relativememe.css('height',height);
+		$(window).load(function(){
+			var width = $('.img-responsive').width();
+			var height = $('.img-responsive').height();
+			var memeCont = $('.memecontainer');
+			var relativememe = $('.relativememe');
+			memeCont.css('height',height);
+			memeCont.css('width',width);
+			relativememe.css('height',height);
 
-	});
-	// 	var memeContainer = $(".memecontainer")
-	// 	memeContainer.css('width',realHiddenWidth)
-	// 	memeContainer.css('height',hiddenHeight)
-
-	// 	var textHeight = hiddenHeight-(268);
-	// 	$('#bottomtext').css('margin-top',textHeight);
-
-	// 	// $('#toptext').width(realHiddenWidth);
-	// 	// $('#bottomtext').width(realHiddenWidth);
-	// 	// var textHeight = parseInt($('#toptext').css('height'), 10)/0.5;
-	// 	// var secondHeight = (image.height*0.9)-(textHeight);
-	// 	// console.log(secondHeight);
-	// 	// $('#bottomtext').css('margin-top',secondHeight);
-	// });
-		
-	// 	// var width = image.width;
-	// 	// console.log(image)
-	// 	// $('#toptext').width(width);
-	// 	// console.log($('#toptext').width);
-	// </script>
-	   <script type="text/javascript">
-	$(window).resize(function() {
-		var width = $('.img-responsive').width();
-		var height = $('.img-responsive').height();
-		var memeCont = $('.memecontainer');
-		var relativememe = $('.relativememe');
-		memeCont.css('width',width);
-		memeCont.css('height',height);
-		relativememe.css('height',height);
-	});
-	
- //        var hiddenWidth = $('.hidden-image').width();
- //        realHiddenWidth = hiddenWidth*0.95
- //        hiddenHeight = $('.hidden-image').height();
- //        var memeContainer = $(".memecontainer")
-	// 	memeContainer.css('width',realHiddenWidth)
-	// 	memeContainer.css('height',hiddenHeight)
-	// 	console.log(hiddenHeight);
-	// 	//console.log(hiddenHeight);
-	// 	// var textHeight = hiddenHeight-(268);
-	// 	// $('#bottomtext').css('margin-top',textHeight);
-	// });
+		});
+	</script>
+	 <script type="text/javascript">
+		$(window).resize(function() {
+			var width = $('.img-responsive').width();
+			var height = $('.img-responsive').height();
+			var memeCont = $('.memecontainer');
+			var relativememe = $('.relativememe');
+			memeCont.css('width',width);
+			memeCont.css('height',height);
+			relativememe.css('height',height);
+		});
 	</script>
 </body>
 </html>

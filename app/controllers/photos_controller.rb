@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
 
 	before_filter :authenticate_user!
 	
-
+	
 	def index
 		@user = current_user
 		#@myfriendphotos = Rails.cache.fetch("photolist", :expires_in => 5.hours) do

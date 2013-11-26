@@ -42,6 +42,7 @@ body{
 
 #testdiv{
 	position: relative;
+	display: inline-table;
 }
 
 .memeimg{
@@ -90,4 +91,17 @@ body{
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #EEEEEE;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #EEEEEE;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #EEEEEE;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #EEEEEE;
 }
