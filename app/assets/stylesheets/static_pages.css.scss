@@ -28,7 +28,7 @@
 	margin-bottom: 15px;
 	color: white;
 	font-size: 18px;
-	font-family: "Nexa Light"
+	font-family: "Nexa Light";
 }
 
 .facebook:hover{
@@ -39,18 +39,57 @@
 	height: 100%;
 }
 
-.bgmemepic{
-	background-size: auto 100%;
-	background-position: center top;
+/*.bgmemepic{
 	height: 100%;
+}*/
+
+#testdiv{
+	position: relative;
 }
+
+.memeimg{
+	position: absolute;
+}
+
+#savebutton{
+	width: 300px;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-family: 'Open Sans';
+	font-size: 26px;
+	margin-top: 10px;
+}
+
+.hidden-image{
+	visibility: hidden;
+}
+
+.memecontainer{
+	position: absolute;
+	
+}
+
+.relativememe{
+	position: relative;
+}
+
 
 .memetext{
 	font-family: "Impact";
 	color: white;
 	border: none;
 	background: transparent;
-	text-shadow: 0px 0px 2px #313131;
-	font-size: 26px;
+	text-shadow: 0px 0px 10px black;
+	letter-spacing: 2px;
+	font-size: 44px;
+	resize: none;
 	width: 100%;
+	text-align: center;
+	padding: 5px;
+}
+
+#bottomtext{
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
 }

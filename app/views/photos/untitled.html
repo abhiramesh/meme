@@ -1,0 +1,77 @@
+<html class="fullheight">
+	<%= content_for :head do %>
+		<script>
+		function saveMeme() {
+		    html2canvas($("#testdiv"), {
+		    	logging: true,
+		    	useCORS: true,
+		        onrendered: function(canvas) {
+		            var myImage = canvas.toDataURL("image/png");
+		            window.open(myImage);
+		        }
+		    });
+		};
+		</script>
+	<% end %>
+<body class="fullheight">
+	<div class="container-fluid fullheight" align="center">
+		<div id="testdiv" class="bgmemepic" style="background:url(<%=@photo.src%>);background-repeat:no-repeat;background-position:center top;background-size: auto auto;">
+			<div class="memecontainer" align="center">
+				<%= text_area_tag "toptext", nil, :class => "memetext", rows: "2", maxlength: "30" %>
+				<br>
+				<%= text_area_tag "bottomtext", nil, :class => "memetext", rows: "2", maxlength: "30" %>
+			</div>
+		</div>
+		<div id="savebutton" class="btn btn-primary btn-lg"> Save Meme! </div>
+		<img src="<%=@photo.src%>" class="hidden-image img-responsive">
+	</div>
+	
+
+
+	<script type="text/javascript">
+	$("#savebutton").click(function(){
+		saveMeme();
+	});
+	</script>
+	<script type="text/javascript">
+	$(window).load(function(){
+		var hiddenWidth = $('.hidden-image').width();
+		realHiddenWidth = hiddenWidth*0.95
+		hiddenHeight = $('.hidden-image').height();
+
+		var memeContainer = $(".memecontainer")
+		memeContainer.css('width',realHiddenWidth)
+		memeContainer.css('height',hiddenHeight)
+
+		var textHeight = hiddenHeight-(268);
+		$('#bottomtext').css('margin-top',textHeight);
+
+		// $('#toptext').width(realHiddenWidth);
+		// $('#bottomtext').width(realHiddenWidth);
+		// var textHeight = parseInt($('#toptext').css('height'), 10)/0.5;
+		// var secondHeight = (image.height*0.9)-(textHeight);
+		// console.log(secondHeight);
+		// $('#bottomtext').css('margin-top',secondHeight);
+	});
+		
+		// var width = image.width;
+		// console.log(image)
+		// $('#toptext').width(width);
+		// console.log($('#toptext').width);
+	</script>
+	<script type="text/javascript">
+	$(window).resize(function() {
+        var hiddenWidth = $('.hidden-image').width();
+        realHiddenWidth = hiddenWidth*0.95
+        hiddenHeight = $('.hidden-image').height();
+        var memeContainer = $(".memecontainer")
+		memeContainer.css('width',realHiddenWidth)
+		memeContainer.css('height',hiddenHeight)
+		console.log(hiddenHeight);
+		//console.log(hiddenHeight);
+		// var textHeight = hiddenHeight-(268);
+		// $('#bottomtext').css('margin-top',textHeight);
+	});
+	</script>
+</body>
+</html>

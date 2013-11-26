@@ -5,10 +5,10 @@ class PhotosController < ApplicationController
 
 	def index
 		@user = current_user
-		@myfriendphotos = Rails.cache.fetch("photolist", :expires_in => 5.hours) do
+		#@myfriendphotos = Rails.cache.fetch("photolist", :expires_in => 5.hours) do
 			@myphotos = Photo.where(uid: @user.uid)
 			@myfriendphotos = @user.photos.shuffle
-		end
+		#end
 		
 		respond_to do |format|
 			if @myfriendphotos.count > 1
