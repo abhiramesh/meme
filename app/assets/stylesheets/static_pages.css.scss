@@ -13,6 +13,11 @@
     src: url('NexaLight.otf');
 }
 
+@font-face {
+    font-family: 'Impact';
+    src: url('Impact.ttf');
+}
+
 .facebook{
 	background: #3b5998;
 	width: 80%;
@@ -28,4 +33,24 @@
 
 .facebook:hover{
 	background: #37528c;
+}
+
+.fullheight{
+	height: 100%;
+}
+
+.bgmemepic{
+	background-size: auto 100%;
+	background-position: center top;
+	height: 100%;
+}
+
+.memetext{
+	font-family: "Impact";
+	color: white;
+	border: none;
+	background: transparent;
+	text-shadow: 0px 0px 2px #313131;
+	font-size: 26px;
+	width: 100%;
 }

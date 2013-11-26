@@ -24,9 +24,6 @@ class PhotosController < ApplicationController
 	def new_meme
 		@user = current_user
 		@photo = Photo.find(params[:photo_id])
-		require 'meme_captain'
-
-		@i = MemeCaptain.meme_top_bottom(@photo.src, 'test', '1 2 3')
 	end
 
 	respond_to do |format|

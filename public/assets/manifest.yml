@@ -1,4 +1,6 @@
 ---
+Impact.ttf: Impact-4515f02dbfcbd47ac547320ddf0dc195.ttf
+Impact/index.ttf: Impact-4515f02dbfcbd47ac547320ddf0dc195.ttf
 NexaBold.otf: NexaBold-9e9d17c97f9f67edba67708702a81f81.otf
 NexaBold/index.otf: NexaBold-9e9d17c97f9f67edba67708702a81f81.otf
 NexaLight.otf: NexaLight-5d5c2f10317f31c9ff2fe7adacd6a4c5.otf
@@ -7,10 +9,10 @@ loading.gif: loading-c273f7252115c9a655748bff7874ffcf.gif
 loading/index.gif: loading-c273f7252115c9a655748bff7874ffcf.gif
 meme.png: meme-ba35724b30b80e93b61cb625d02ebc81.png
 meme/index.png: meme-ba35724b30b80e93b61cb625d02ebc81.png
-application.js: application-b0ad27dbf9b4b71b1f7f95608683f545.js
-application/index.js: application-b0ad27dbf9b4b71b1f7f95608683f545.js
-application.css: application-98f38c052089ac59b60a6027cba86810.css
-application/index.css: application-98f38c052089ac59b60a6027cba86810.css
+application.js: application-aef8539b4164ce178a8b1dc7ce58daf5.js
+application/index.js: application-aef8539b4164ce178a8b1dc7ce58daf5.js
+application.css: application-29928b0251df69c4f358d5db67f9fe5f.css
+application/index.css: application-29928b0251df69c4f358d5db67f9fe5f.css
 masonry/loader.gif: masonry/loader-e2a65b9489a6a7d066dd12455c270cc5.gif
 masonry/loader/index.gif: masonry/loader-e2a65b9489a6a7d066dd12455c270cc5.gif
 jquery.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map

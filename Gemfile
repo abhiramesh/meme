@@ -32,7 +32,7 @@ end
 
 gem 'jquery-rails'
 gem 'masonry-rails'
-gem 'meme_captain'
+#gem 'meme_captain'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

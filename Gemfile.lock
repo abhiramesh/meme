@@ -77,9 +77,6 @@ GEM
     masonry-rails (0.2.0)
       rails
     memcachier (0.0.2)
-    meme_captain (0.3.0)
-      mime-types
-      rmagick
     mime-types (1.25)
     multi_json (1.8.2)
     multipart-post (1.2.0)
@@ -126,7 +123,6 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
-    rmagick (2.13.2)
     sass (3.2.12)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -165,7 +161,6 @@ DEPENDENCIES
   koala
   masonry-rails
   memcachier
-  meme_captain
   newrelic_rpm
   omniauth
   omniauth-facebook

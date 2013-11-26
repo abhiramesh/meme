@@ -1,3 +1,40 @@
-<%= @photo %>
+<html class="fullheight">
+	<%= content_for :head do %>
+		<script>
+		function saveMeme() {
+		    html2canvas($("#testdiv"), {
+		    	logging: true,
+		    	useCORS: true,
+		        onrendered: function(canvas) {
+		            var myImage = canvas.toDataURL("image/png");
+		            window.open(myImage);
+		        }
+		    });
+		};
+		var bg = $(".bigmemepic").attr('class');
+		console.log(bg);
+		// var image = new Image();
+		// imageSrc="<%=@photo.src%>";
+		// image.src = imageSrc;
+		// var width = image.width;
+		// console.log(image)
+		// $('#toptext').width(width);
+		// console.log($('#toptext').width);
+		</script>
+	<% end %>
+<body class="fullheight">
+	<div class="container fullheight" align="center">
+		<div id="testdiv" class="bgmemepic" style="background:url(<%=@photo.src%>);background-repeat:no-repeat;background-position:center top;">
+			<%= text_field_tag "toptext", nil, :class => "memetext" %>
+			<%= text_field_tag "bottomtext" %>
+			<div id="savebutton"> Save Meme! </div>
+		</div>
+	</div>
 
-
+	<script type="text/javascript">
+	$("#savebutton").click(function(){
+		saveMeme();
+	});
+	</script>
+</body>
+</html>
