@@ -1,4 +1,4 @@
-<html>
+<html class="fullheight">
 	<%= content_for :head do %>
 		<script>
 		function saveMeme() {
@@ -13,8 +13,13 @@
 		};
 		</script>
 	<% end %>
-<body>
-	<div class="container-fluid" align="center">
+<body class="fullheight">
+	<div class="container" align="center">
+		<div class="relativebutton" align="center">
+			<div id="savebutton" class="btn btn-primary btn-lg"> Save Meme! </div>
+		</div>
+	</div>
+	<div class="container-fluid fullheight" align="center">
 		<div id="testdiv" class="bgmemepic">
 			<img src="<%=@photo.src%>" class="img-responsive memeimg">
 			<div class="memecontainer" align="center">
@@ -24,11 +29,6 @@
 					<%= text_area_tag "bottomtext", nil, :class => "memetext", rows: "2", maxlength: "30" %>
 				</div>
 			</div>
-		</div>
-		<div id="savebutton" class="btn btn-primary btn-lg"> Save Meme! </div>
-	</div>
-	<div class="container" align="center">
-		<div class="relativebutton" align="center">
 		</div>
 	</div>
 	
