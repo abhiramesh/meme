@@ -15,7 +15,7 @@ class FmemesController < ApplicationController
 			new_meme = meme_bucket.objects.build('meme_' + current_user.id.to_s + '_' + params["photo_id"] + '.png' )
 			new_meme.content = meme_object
 			if new_meme.save
-				fmeme = Fmeme.create(url: new_meme.url, user_id: current_user.id, photo_id: params["photo_id"].to_i)
+				fmeme = Fmeme.create(url: new_meme.url, user_id: current_user.id, photo_id: params["photo_id"].to_i, uid: Photo.find(params["photo_id"]).friend.uid)
 				if fmeme.save
 					render json: fmeme.id
 				else
