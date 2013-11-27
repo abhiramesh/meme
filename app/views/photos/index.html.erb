@@ -1,6 +1,8 @@
 <%= content_for :head do %>
 <% end %>
 
+<h2 align="center"> Pick a photo, and make a meme! </h2>
+
 <% if @myfriendphotos != [] %>
 	<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
 		<% @myfriendphotos.each do |p| %>

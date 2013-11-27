@@ -37,5 +37,9 @@ class FmemesController < ApplicationController
 		@fmemes = current_user.fmemes.paginate(:page => params[:page], :per_page => 20)
 	end
 
+	def memes_of_me
+		@fmemes = Fmeme.where(:uid => current_user.uid)
+	end
+
 
 end
