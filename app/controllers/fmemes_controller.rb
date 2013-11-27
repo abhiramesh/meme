@@ -1,6 +1,6 @@
 class FmemesController < ApplicationController
 
-	before_filter :authenticate_user!
+	before_filter :login_required
 
 	require "s3"
 	require "open-uri"

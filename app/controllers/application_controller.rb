@@ -9,5 +9,10 @@ class ApplicationController < ActionController::Base
   	root_path
   end
 
+  def login_required
+  	if current_user.blank?
+  		redirect_to root_path
+  	end
+  end
 
 end

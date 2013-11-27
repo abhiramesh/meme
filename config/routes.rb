@@ -12,6 +12,10 @@ Meme::Application.routes.draw do
     get '/logout', :to => "devise/sessions#destroy", :as => "logout"
   end
 
+  authenticated :user do
+    root :to => "photos#index"
+  end 
+
   resources :users
 
   root :to => "static_pages#home"
@@ -26,6 +30,8 @@ Meme::Application.routes.draw do
 
   get '/fmemes', :to => "fmemes#index"
 
+
+  match '*path' => redirect('/')
 
 
   # The priority is based upon order of creation:

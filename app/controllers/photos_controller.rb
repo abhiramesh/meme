@@ -1,12 +1,12 @@
 class PhotosController < ApplicationController
 
-	before_filter :authenticate_user!
+	before_filter :login_required
 	
 	require 'will_paginate/array'
 
 	def index
 		@user = current_user
-		#@myfriendphotos = Rails.cache.fetch("photolist", :expires_in => 5.hours) do
+		#@myfriendphotos = Rails.cache.fetch("photolist", :expires_in => 4.seconds) do
 			@myphotos = Photo.where(uid: @user.uid)
 			@myfriendphotos = @user.photos
 			@myfriendphotos = @myfriendphotos.shuffle.paginate(:page => params[:page], :per_page => 20)
