@@ -18,6 +18,8 @@
     src: url('Impact.ttf');
 }
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600);
+
 body{
 	padding: 5px 0px 50px 0px;
 }
@@ -78,9 +80,10 @@ body{
 	color: white;
 	border: none;
 	background: transparent;
-	text-shadow: 0px 0px 10px black;
-	letter-spacing: 2px;
+	text-shadow: 0px 0px 8px black;
+	letter-spacing: 3px;
 	font-size: 44px;
+	line-height: 50px;
 	resize: none;
 	width: 100%;
 	text-align: center;
@@ -91,6 +94,15 @@ body{
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
+}
+
+#bottomtext,#toptext{
+	height: 200px;
+	outline-color: #357ebd;
+}
+
+#infscr-loading img {
+	width: 80%;
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */

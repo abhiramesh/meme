@@ -39,9 +39,9 @@
 			<img src="<%=@photo.src%>" class="img-responsive memeimg">
 			<div class="memecontainer" align="center">
 				<div class="relativememe">
-					<%= text_area_tag "toptext", nil, :class => "memetext", placeholder: "Type a witty phrase here", rows: "2", maxlength: "30" %>
+					<%= text_area_tag "toptext", nil, :class => "memetext", placeholder: "Type a witty phrase here", rows: "2", maxlength: "100" %>
 					<br>
-					<%= text_area_tag "bottomtext", nil, :class => "memetext", placeholder: "And another one down here", rows: "2", maxlength: "30" %>
+					<%= text_area_tag "bottomtext", nil, :class => "memetext", placeholder: "And another one down here", rows: "2", maxlength: "100" %>
 				</div>
 			</div>
 		</div>
@@ -51,26 +51,56 @@
 		<div class="relativebutton" align="center">
 		</div>
 	</div>
-	
-
+	<div id="hidden-resizer-top" class="memetext" style="visibility: hidden"></div>
+	<div id="hidden-resizer-bottom" class="memetext" style="visibility: hidden"></div>
 
 	<script type="text/javascript">
 		$("#savebutton").click(function(){
 			saveMeme();
 		});
+		$('#toptext').keypress(function() {
+			changeFontTop($('#toptext'));			
+		});
+		$('#bottomtext').keypress(function() {
+			changeFontBottom($('#bottomtext'));
+		});
 
-		// $('#toptext').popover({
-		// 	placement: 'right',
-		// 	title: "Make it hilarous!",
-		// 	container: $('#testdiv'),
-		// 	trigger: 'hover'
-		// });
-		// $('#bottomtext').popover({
-		// 	placement: 'right',
-		// 	title: "",
-		// 	container: $('#testdiv'),
-		// 	trigger: 'hover'
-		// });
+		 function changeFontTop(field) {
+	        var resizer = $('#hidden-resizer-top');
+	        var desiredHeight = $('.memeimg').height()*0.2;
+
+	        var textHeight = resizer.html(field.val()).height();
+	        console.log(textHeight);
+	        console.log(desiredHeight);
+	        if (desiredHeight < textHeight) {
+	        	var size_now = parseInt(field.css("font-size"));
+	        	var size_new = size_now * desiredHeight/textHeight;
+	            field.css("font-size",size_new);
+	            field.css("line-height",'110%');
+	            resizer.css("font-size",size_new);
+	            resizer.css("line-height",'110%');
+	            console.log(resizer.height());
+	            textHeight = resizer.height();
+	        }
+	    };
+	    function changeFontBottom(field) {
+	        var resizer = $('#hidden-resizer-bottom');
+	        var desiredHeight = $('.memeimg').height()*0.2;
+
+	        var textHeight = resizer.html(field.val()).height();
+	        console.log(textHeight);
+	        console.log(desiredHeight);
+	        if (desiredHeight < textHeight) {
+	        	var size_now = parseInt(field.css("font-size"));
+	        	var size_new = size_now * desiredHeight/textHeight;
+	            field.css("font-size",size_new);
+	            field.css("line-height",'110%');
+	            resizer.css("font-size",size_new);
+	            resizer.css("line-height",'110%');
+	            console.log(resizer.height());
+	            textHeight = resizer.height();
+	        }
+	    };
 	</script>
 	<script type="text/javascript">
 		$(window).load(function(){
@@ -78,6 +108,8 @@
 			var height = $('.img-responsive').height();
 			var memeCont = $('.memecontainer');
 			var relativememe = $('.relativememe');
+			$('#hidden-resizer-top').css('width',width);
+			$('#hidden-resizer-bottom').css('width',width);
 			memeCont.css('height',height);
 			memeCont.css('width',width);
 			relativememe.css('height',height);
@@ -90,6 +122,8 @@
 			var height = $('.img-responsive').height();
 			var memeCont = $('.memecontainer');
 			var relativememe = $('.relativememe');
+			$('#hidden-resizer-top').css('width',width);
+			$('#hidden-resizer-bottom').css('width',width);
 			memeCont.css('width',width);
 			memeCont.css('height',height);
 			relativememe.css('height',height);

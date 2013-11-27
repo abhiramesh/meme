@@ -8,7 +8,8 @@ class PhotosController < ApplicationController
 		@user = current_user
 		#@myfriendphotos = Rails.cache.fetch("photolist", :expires_in => 5.hours) do
 			@myphotos = Photo.where(uid: @user.uid)
-			@myfriendphotos = @user.photos.paginate(:page => params[:page], :per_page => 30).shuffle
+			@myfriendphotos = @user.photos
+			@myfriendphotos = @myfriendphotos.shuffle.paginate(:page => params[:page], :per_page => 20)
 		#end
 		
 		respond_to do |format|

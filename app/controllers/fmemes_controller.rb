@@ -5,7 +5,7 @@ class FmemesController < ApplicationController
 	require "s3"
 	require "open-uri"
 	require "base64"
-
+	require 'will_paginate/array'
 
 	def create
 		service = S3::Service.new(:access_key_id => 'AKIAIMGYJXQ76NRH7YTQ', :secret_access_key => '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')
@@ -34,7 +34,7 @@ class FmemesController < ApplicationController
 	end
 
 	def index #user profile with saved memes
-		@fmemes = current_user.fmemes
+		@fmemes = current_user.fmemes.paginate(:page => params[:page], :per_page => 20)
 	end
 
 

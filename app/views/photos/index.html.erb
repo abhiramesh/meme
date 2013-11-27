@@ -1,10 +1,17 @@
+<%= content_for :head do %>
+	<%= javascript_include_tag 'jquery.infinitescroll.min.js' %>
+<% end %>
+
 <% if @myfriendphotos != [] %>
 	<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
-		<% @myfriendphotos.first(20).each do |p| %>
+		<% @myfriendphotos.each do |p| %>
 		    <div class="box col2">
 				<%= link_to image_tag(p.src), new_meme_path(:photo_id => p.id) %>
 			</div>
 		<% end %>
+	</div>
+	<div class="container" align="center">
+		<div class="container" id="nav" align="center" style="display:none"><%= will_paginate @myfriendphotos %></div>
 	</div>
 <% else %>
 <div class="container" align="center">
@@ -47,28 +54,34 @@ function worker(){
 
 
 <script type="text/javascript">
-// $(document).ready(function(){
-// 	$('#masonry-container').masonry({
-// 	  itemSelector: '.box',
-// 	  gutterWidth: 0,
-// 	  // set columnWidth a fraction of the container width
-// 	  columnWidth: function( containerWidth ) {
-// 	    return 226;
-// 	  }
-// 	}).imagesLoaded(function() { $('#masonry-container').masonry('reload');
-// 		});
-// });
-
 $(document).ready(function(){
       var $container = $('#masonry-container');
       $container.imagesLoaded( function(){
         $container.masonry({
           itemSelector: '.box',
           gutterWidth: 0,
+          isResizable: true,
           columnWidth: function( containerWidth ) {
 	    	return 226;
 		  }
         });
       });
+
+      $container.infinitescroll({
+        navSelector  : "div.pagination",            
+        nextSelector : "div.pagination a:first",    
+        itemSelector : "div.box",       
+        animate: true,
+        extraScrollPx: 50,
+        bufferPx : 250
+       },
+	       	function( newElements ) {
+	       		var $newElems = $( newElements ).css({ opacity: 0 });
+	       		$newElems.imagesLoaded(function(){
+	       			$newElems.animate({ opacity: 1 });
+	       			$container.masonry( 'appended', $newElems, true);
+	       		});
+	       	}
+       	);
 });
 </script>
