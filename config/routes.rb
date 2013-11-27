@@ -30,6 +30,8 @@ Meme::Application.routes.draw do
 
   get '/fmemes', :to => "fmemes#index"
 
+  get '/memes_of_me', :to => "fmemes#memes_of_me"
+
   match '/results', :to => "photos#search_results", :as => "friend_search"
 
 

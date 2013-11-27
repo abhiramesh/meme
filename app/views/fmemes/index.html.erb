@@ -9,9 +9,6 @@
 			</div>
 		<% end %>
 	</div>
-	<div class="container" align="center">
-		<div class="container" id="nav" align="center" style="display:none"><%= will_paginate @myfriendphotos %></div>
-	</div>
 <% else %>
 <div align="center">
 	<h2>You haven't made any memes yet!<h2/>
@@ -33,22 +30,5 @@ $(document).ready(function(){
 		  }
         });
       });
-
-      $container.infinitescroll({
-        navSelector  : "div.pagination",            
-        nextSelector : "div.pagination a:first",    
-        itemSelector : "div.box",       
-        animate: true,
-        extraScrollPx: 50,
-        bufferPx : 250
-       },
-	       	function( newElements ) {
-	       		var $newElems = $( newElements ).css({ opacity: 0 });
-	       		$newElems.imagesLoaded(function(){
-	       			$newElems.animate({ opacity: 1 });
-	       			$container.masonry( 'appended', $newElems, true);
-	       		});
-	       	}
-       	);
 });
 </script>
