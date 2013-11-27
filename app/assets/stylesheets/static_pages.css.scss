@@ -96,6 +96,7 @@ body{
 	left: 0px;
 }
 
+<<<<<<< HEAD
 #bottomtext,#toptext{
 	height: 200px;
 	outline-color: #357ebd;
@@ -103,6 +104,39 @@ body{
 
 #infscr-loading img {
 	width: 80%;
+=======
+#header {
+	height: 50px;
+}
+
+#footer {
+	padding-top: 14px;
+}
+
+#logo {
+	width: 100px;
+	height: 100%;
+}
+#home_logo {
+	width: 300px;
+	height: 100%;
+}
+
+#search {
+	margin-top: 24px;
+	margin-left: 30px;
+}
+
+#links {
+	margin-top: 24px;
+	float: right;
+}
+
+
+
+#social-plugins {
+	margin: 0 auto;
+>>>>>>> d9353ef75c91eab33beef8052af485785da37b0f
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */
