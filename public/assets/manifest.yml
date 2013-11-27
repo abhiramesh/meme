@@ -7,8 +7,6 @@ NexaLight.otf: NexaLight-5d5c2f10317f31c9ff2fe7adacd6a4c5.otf
 NexaLight/index.otf: NexaLight-5d5c2f10317f31c9ff2fe7adacd6a4c5.otf
 loading.gif: loading-c273f7252115c9a655748bff7874ffcf.gif
 loading/index.gif: loading-c273f7252115c9a655748bff7874ffcf.gif
-meme.png: meme-ba35724b30b80e93b61cb625d02ebc81.png
-meme/index.png: meme-ba35724b30b80e93b61cb625d02ebc81.png
 application.js: application-443959dc5f90a737246f38f589c81a1e.js
 application/index.js: application-443959dc5f90a737246f38f589c81a1e.js
 application.css: application-438e8d736ec5e86eaf4a73b7e67193b7.css
