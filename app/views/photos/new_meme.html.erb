@@ -34,7 +34,7 @@
 		</script>
 	<% end %>
 <body>
-	<div class="container-fluid" align="center">
+	<div class="container-fluid" id="fl" align="center">
 		<div id="testdiv">
 			<img src="<%=@photo.src%>" class="img-responsive memeimg">
 			<div class="memecontainer" align="center">
@@ -135,14 +135,14 @@
 		$(window).load(function(){
 			$('#toptext').popover({
 			   trigger: 'manual',
-               content: 'Type a witty phrase here',
+               content: 'Click the image to type)',
                placement: 'left',
                container: $("#testdiv")
 
 			});
 			$('#bottomtext').popover({
 			   trigger: 'manual',
-               content: 'And another one down here',
+               content: 'Click the image to type)',
                placement: 'left',
                container: $("#testdiv")
 			});
