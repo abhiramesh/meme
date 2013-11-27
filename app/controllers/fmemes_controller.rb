@@ -1,6 +1,6 @@
 class FmemesController < ApplicationController
 
-	before_filter :login_required
+	before_filter :login_required, :except => [:show]
 
 	require "s3"
 	require "open-uri"
