@@ -13,13 +13,12 @@
 						alert("Something went wrong! Let's try again.");
 					}
 					else {
-						$('#savebutton').hide();
-						$('#loading').show();
 						window.location.replace("/fmemes/" + response.responseText);
 					};
-
 				}
 			});
+			$('#savebutton').hide();
+			$('#loading').show();
 		};
 
 		function saveMeme() {
