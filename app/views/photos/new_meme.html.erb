@@ -13,6 +13,8 @@
 						alert("Something went wrong! Let's try again.");
 					}
 					else {
+						$('#savebutton').hide();
+						$('#loading').show();
 						window.location.replace("/fmemes/" + response.responseText);
 					};
 
@@ -45,6 +47,7 @@
 				</div>
 			</div>
 		</div>
+		<img src="/assets/loading.gif" id="loading" style="width: 200px;display:none;">
 		<div id="savebutton" class="btn btn-primary btn-lg"> Save Meme! </div>
 	</div>
 	<div class="container" align="center">
@@ -135,14 +138,14 @@
 		$(window).load(function(){
 			$('#toptext').popover({
 			   trigger: 'manual',
-               content: 'Click the image to type)',
+               content: 'Click the image to type',
                placement: 'left',
                container: $("#testdiv")
 
 			});
 			$('#bottomtext').popover({
 			   trigger: 'manual',
-               content: 'Click the image to type)',
+               content: 'Click the image to type',
                placement: 'left',
                container: $("#testdiv")
 			});
