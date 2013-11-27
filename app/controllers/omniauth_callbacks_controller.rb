@@ -13,7 +13,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		if user
 			user.oauth_token = omniauth['credentials']['token']
 			user.save!
-			if @fmeme = Fmeme.find(params["state"].to_i)
+			if @fmeme = Fmeme.where(id: params["state"].to_i).first
 				sign_in user
 				user.delay.post_to_friend_wall(@fmeme)
 				redirect_to show_meme_path(@fmeme), :flash => { :notice => "Successfully posted to your wall." }
