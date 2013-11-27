@@ -47,14 +47,28 @@ function worker(){
 
 
 <script type="text/javascript">
+// $(document).ready(function(){
+// 	$('#masonry-container').masonry({
+// 	  itemSelector: '.box',
+// 	  gutterWidth: 0,
+// 	  // set columnWidth a fraction of the container width
+// 	  columnWidth: function( containerWidth ) {
+// 	    return 226;
+// 	  }
+// 	}).imagesLoaded(function() { $('#masonry-container').masonry('reload');
+// 		});
+// });
+
 $(document).ready(function(){
-	$('#masonry-container').masonry({
-	  itemSelector: '.box',
-	  gutterWidth: 0,
-	  // set columnWidth a fraction of the container width
-	  columnWidth: function( containerWidth ) {
-	    return 226;
-	  }
-	});
+      var $container = $('#masonry-container');
+      $container.imagesLoaded( function(){
+        $container.masonry({
+          itemSelector: '.box',
+          gutterWidth: 0,
+          columnWidth: function( containerWidth ) {
+	    	return 226;
+		  }
+        });
+      });
 });
 </script>
