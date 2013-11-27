@@ -4,13 +4,21 @@ class PhotosController < ApplicationController
 	
 	require 'will_paginate/array'
 
+
 	def index
 		@user = current_user
-		#@myfriendphotos = Rails.cache.fetch("photolist", :expires_in => 4.seconds) do
-			@myphotos = Photo.where(uid: @user.uid)
-			@myfriendphotos = @user.photos
-			@myfriendphotos = @myfriendphotos.shuffle.paginate(:page => params[:page], :per_page => 30)
-		#end
+		if Delayed::Job.where(queue: "friends_" + @user.id.to_s)
+			@myfriendphotos = Rails.cache.fetch("photolist", :expires_in => 30.seconds) do
+				# @myphotos = Photo.where(uid: @user.uid)
+				@myfriendphotos = @user.photos
+			end
+		else
+			@myfriendphotos = Rails.cache.fetch("photolistreal") do
+				# @myphotos = Photo.where(uid: @user.uid)
+				@myfriendphotos = @user.photos
+			end
+		end
+		@myfriendphotos = @myfriendphotos.shuffle.paginate(:page => params[:page], :per_page => 30)
 		
 		respond_to do |format|
 			if @myfriendphotos.count > 1

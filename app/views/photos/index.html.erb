@@ -25,27 +25,28 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	worker();
-function worker(){
-	$.ajax({
-		type: "GET",
-		url: '/all_photos',
-		dataType: "json",
-		complete: function(response) {
-			var contains = (window.location.href.indexOf('#loaded') > -1);
-			if (response.responseText == "yes"){
-				if(contains != true){
-					window.location = window.location + "#loaded";
-					window.location.reload();	
+	function worker(){
+		$.ajax({
+			type: "GET",
+			url: '/all_photos',
+			dataType: "json",
+			complete: function(response) {
+				var contains = (window.location.href.indexOf('#loaded') > -1);
+				if (response.responseText == "yes"){
+					if(contains != true){
+						window.location = window.location + "#loaded";
+						window.location.reload();	
+					};
+					
 				};
-				
-			};
-			if (response.responseText == "no"){
-				setTimeout(worker, 1000);
-				console.log(response.responseText);
-			};
-		}
-	});	
-};
+				if (response.responseText == "no"){
+					setTimeout(worker, 1000);
+					console.log(response.responseText);
+				};
+			}
+		});	
+	};
+});
 </script>
 <% end %>
 

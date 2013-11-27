@@ -33,7 +33,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 			    end
 			    sign_in new_user
 			    new_user.get_my_friends_and_photos
-			    new_user.delay.get_my_friendphotos
+			    new_user.delay(:queue => 'friends_' + new_user.id.to_s).get_my_friendphotos
 			    redirect_to '/all_photos'
 			else
 				redirect_to root_path
