@@ -33,7 +33,7 @@ class FmemesController < ApplicationController
 		@fmeme = Fmeme.find(params[:id])
 	end
 
-	def index
+	def index #user profile with saved memes
 		@fmemes = current_user.fmemes
 	end
 

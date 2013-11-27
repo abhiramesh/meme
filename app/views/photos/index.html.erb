@@ -55,6 +55,6 @@ $(document).ready(function(){
 	  columnWidth: function( containerWidth ) {
 	    return 226;
 	  }
-	});
+	}).imagesLoaded(function() { $('#masonry-container').masonry('reload');  });
 });
 </script>
