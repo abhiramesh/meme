@@ -1,5 +1,5 @@
 <%= content_for :head do %>
-	<meta property="og:url" content="http://mememyfriends.com/fmemes/<%=@fmeme.id%>"/>
+	<meta property="og:url" content="http://www.mememyfriends.com/fmemes/<%=@fmeme.id%>"/>
 	<meta property="og:title" content="Meme My Friends"/>
 	<meta property="og:image" content="<%=@fmeme.url%>"/>
 	<meta property="og:description" content="I made this hilarious meme!"/>
@@ -8,6 +8,6 @@
 
 <div class="container" align="center">
 	<a href="https://www.facebook.com/dialog/feed?app_id=407181032744681&caption=I%20made%20this%20hilarious%20meme! 
-  &link=http%3A%2F%2Fmememyfriends.com%2Ffmemes%2f<%=@fmeme.id%>&display=popup&redirect_uri=http://mememyfriends.com/fmemes/<%=@fmeme.id%>">Share</a>
+  &link=http%3A%2F%2Fwww.mememyfriends.com%2Ffmemes%2f<%=@fmeme.id%>&display=popup&redirect_uri=http://mememyfriends.com/fmemes/<%=@fmeme.id%>">Share</a>
 	<img src="<%=@fmeme.url%>" class="img-responsive memeimg">
 </div>
