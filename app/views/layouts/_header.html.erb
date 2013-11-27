@@ -18,6 +18,13 @@
     <% end %>
   </div>
 </nav>
+<div class="container" align="center">
+  <% if flash[:notice] %>
+    <div class="noticem alert alert-warning fade in">
+      <%=flash[:notice]%>
+    </div>
+  <% end %>
+</div>
 
 	
 <% end %>

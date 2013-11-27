@@ -35,10 +35,21 @@ body{
 	color: white;
 	font-size: 18px;
 	font-family: "Open Sans";
+	a {
+		color: white;
+		text-decoration: none;
+	}
 }
 
+input[type="submit"].facebook{
+		border: none !important;
+	}
 .facebook:hover{
 	background: #37528c;
+	a {
+		color: white;
+		text-decoration: none;	
+	}
 }
 
 

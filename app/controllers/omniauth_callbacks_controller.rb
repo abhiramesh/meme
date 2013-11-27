@@ -11,7 +11,15 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		
 		user = User.where(email: email).first
 		if user
+			user.oauth_token = omniauth['credentials']['token']
+			user.save!
+			if @fmeme = Fmeme.find(params["state"].to_i)
+				sign_in user
+				user.delay.post_to_friend_wall(@fmeme)
+				redirect_to show_meme_path(@fmeme), :flash => { :notice => "Successfully posted to your wall." }
+			else
 			sign_in_and_redirect user
+			end
 		else
 			new_user = User.create(email: email, name: name, password: Devise.friendly_token, provider: provider, oauth_token: oauth_token, oauth_expires_at: oauth_expires_at, uid: uid)
 			graph = new_user.facebook

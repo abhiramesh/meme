@@ -7,7 +7,16 @@
 
 
 <div class="container" align="center">
-	<a href="https://www.facebook.com/dialog/feed?app_id=407181032744681&caption=I%20made%20this%20hilarious%20meme! 
-  &link=http%3A%2F%2Fwww.mememyfriends.com%2Ffmemes%2f<%=@fmeme.id%>&display=popup&redirect_uri=http://mememyfriends.com/fmemes/<%=@fmeme.id%>">Share</a>
+	<% if @post_permission == true %>
+	<%= form_tag share_with_friend_path(:fmeme => @fmeme) do |f| %>
+		<%= submit_tag "Share with #{@friend.name.split(' ')[0]}", :class => "facebook" %>
+	<% end %>
+	<% else %>
+	<a href="/users/auth/facebook?scope=publish_actions&state=<%=@fmeme.id%>">
+		<div class="facebook">
+		Share with <%=@friend.name.split(' ')[0]%>
+		</div>
+	</a>
+	<% end %>
 	<img src="<%=@fmeme.url%>" class="img-responsive memeimg">
 </div>

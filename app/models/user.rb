@@ -15,6 +15,13 @@ class User < ActiveRecord::Base
     @facebook ||= Koala::Facebook::API.new(self.oauth_token)
   end
 
+  def post_to_friend_wall(fmeme)
+		friend = Friend.find_by_uid(fmeme.uid)
+		photo = self.facebook.put_picture(fmeme.url.to_s, {:message => "I made a hilarious meme of #{friend.name} - Make memes of your friends at http://www.mememyfriends.com" })
+  		photo_id = photo["id"]
+		self.facebook.put_connections(photo_id,'tags',{'to' => friend.uid})
+  end
+
 
   def get_my_friends_and_photos
   	if self.facebook

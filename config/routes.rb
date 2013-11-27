@@ -33,6 +33,7 @@ Meme::Application.routes.draw do
   get '/memes_of_me', :to => "fmemes#memes_of_me"
 
   match '/results', :to => "photos#search_results", :as => "friend_search"
+  match '/share_with_friend', :to => "fmemes#share_with_friend", :as => "share_with_friend"
 
   get '/get_friends', :to => "friends#get_friends"
 

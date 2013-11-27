@@ -1,7 +1,7 @@
 <%= content_for :head do %>
 <% end %>
 
-<% if @fmemes != [] %>
+<% if @fmemes != nil && @fmemes != [] %>
 	<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
 		<% @fmemes.all.each do |f| %>
 		    <div class="box col2">

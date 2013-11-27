@@ -30,7 +30,30 @@ class FmemesController < ApplicationController
 	end
 
 	def show
-		@fmeme = Fmeme.find(params[:id])
+		if Fmeme.find(params[:id]).user == current_user
+			@fmeme = Fmeme.find(params[:id])
+			@friend = Friend.find_by_uid(@fmeme.uid)
+			@post_permission = current_user.facebook.get_connections('me','permissions')[0]['publish_actions'].to_i == 1 ? true : false
+		else
+			redirect_to root_path
+		end
+	end
+
+	def share_with_friend
+		if params[:fmeme]
+			begin
+			@fmeme = Fmeme.find(params[:fmeme])
+			@friend = Friend.find_by_uid(@fmeme.uid)
+			@photo = current_user.facebook.put_picture(@fmeme.url.to_s, {:message => "I made a hilarious meme of #{@friend.name}! Make memes of your friends at http://www.mememyfriends.com" })
+			@photo_id = @photo["id"]
+			current_user.facebook.put_connections(@photo_id,'tags',{'to' => @friend.uid})
+			redirect_to show_meme_path(@fmeme), :flash => { :notice => "Successfully posted to your wall." }
+			rescue
+				redirect_to show_meme_path(@fmeme)
+			end
+		else
+			redirect_to '/fmemes'
+		end
 	end
 
 	def index #user profile with saved memes
