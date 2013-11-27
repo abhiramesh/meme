@@ -101,7 +101,6 @@ body{
 	padding-top: 14px;
 }
 
-
 #logo {
 	width: 100px;
 	height: 100%;
@@ -112,9 +111,16 @@ body{
 }
 
 #search {
-	margin-left: 30px;
 	margin-top: 24px;
+	margin-left: 30px;
 }
+
+#links {
+	margin-top: 24px;
+	float: right;
+}
+
+
 
 #social-plugins {
 	margin: 0 auto;
