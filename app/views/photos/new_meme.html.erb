@@ -39,9 +39,9 @@
 			<img src="<%=@photo.src%>" class="img-responsive memeimg">
 			<div class="memecontainer" align="center">
 				<div class="relativememe">
-					<%= text_area_tag "toptext", nil, :class => "memetext", placeholder: "Type a witty phrase here", rows: "2", maxlength: "100" %>
+					<%= text_area_tag "toptext", nil, :class => "memetext", rows: "2", maxlength: "100" %>
 					<br>
-					<%= text_area_tag "bottomtext", nil, :class => "memetext", placeholder: "And another one down here", rows: "2", maxlength: "100" %>
+					<%= text_area_tag "bottomtext", nil, :class => "memetext", rows: "2", maxlength: "100" %>
 				</div>
 			</div>
 		</div>
@@ -127,6 +127,27 @@
 			memeCont.css('width',width);
 			memeCont.css('height',height);
 			relativememe.css('height',height);
+		});
+	</script>
+
+	<!-- Popover -->
+	<script>
+		$(window).load(function(){
+			$('#toptext').popover({
+			   trigger: 'manual',
+               content: 'Type a witty phrase here',
+               placement: 'left',
+               container: $("#testdiv")
+
+			});
+			$('#bottomtext').popover({
+			   trigger: 'manual',
+               content: 'And another one down here',
+               placement: 'left',
+               container: $("#testdiv")
+			});
+			$('#toptext').popover('show');
+			$('#bottomtext').popover('show');
 		});
 	</script>
 
