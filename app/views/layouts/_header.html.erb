@@ -10,13 +10,13 @@
       <li><%= link_to "My Collection", fmemes_path %></li>
       <li><%= link_to "Memes of Me", fmemes_path %></li>
     </ul>
-    <form class="navbar-form navbar-left" role="search" id="search">
+    <%= form_tag friend_search_path, :class => "navbar-form navbar-left", :role => "search", :id => "search" do |f| %>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Find your friends">
+        <%= text_field_tag "query", nil, :placeholder => "Find your friends", :class => "form-control" %>
       </div>
-      <button type="submit" class="btn btn-default">GO!</button>
-    </form>
-  </div><!-- /.navbar-collapse -->
+      <%= submit_tag "Go!", :class => "btn btn-default" %>
+    <% end %>
+  </div>
 </nav>
 
 	

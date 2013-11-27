@@ -30,8 +30,8 @@ Meme::Application.routes.draw do
 
   get '/fmemes', :to => "fmemes#index"
 
+  match '/results', :to => "photos#search_results", :as => "friend_search"
 
-  match '*path' => redirect('/')
 
 
   # The priority is based upon order of creation:
