@@ -32,6 +32,8 @@ Meme::Application.routes.draw do
 
   match '/results', :to => "photos#search_results", :as => "friend_search"
 
+  get '/get_friends', :to => "friends#get_friends"
+
 
 
   # The priority is based upon order of creation:

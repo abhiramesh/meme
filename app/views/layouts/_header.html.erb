@@ -21,3 +21,25 @@
 
 	
 <% end %>
+
+<script type="text/javascript">
+$("#query").autocomplete({
+  minLength: 2,
+  source: '/get_friends',
+  focus: function(event, ui) {
+    $('#query').val(ui.item.name);
+    return false;
+  },
+  select: function(event, ui) {
+    $('#query').val(ui.item.name);
+    return false;
+  }
+})
+.data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+            return $( "<li></li>" )
+                .data( "ui-item.autocomplete", item )
+ // For now which just want to show the person.given_name in the list.
+                .append( "<a>" + item.name + "</a>" )
+                .appendTo( ul );
+        };
+</script>
