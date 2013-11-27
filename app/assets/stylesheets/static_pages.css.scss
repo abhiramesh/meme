@@ -93,6 +93,33 @@ body{
 	left: 0px;
 }
 
+#header {
+	height: 50px;
+}
+
+#footer {
+	padding-top: 14px;
+}
+
+
+#logo {
+	width: 100px;
+	height: 100%;
+}
+#home_logo {
+	width: 300px;
+	height: 100%;
+}
+
+#search {
+	margin-left: 30px;
+	margin-top: 24px;
+}
+
+#social-plugins {
+	margin: 0 auto;
+}
+
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    #EEEEEE;
 }
