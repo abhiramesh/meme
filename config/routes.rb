@@ -22,9 +22,11 @@ Meme::Application.routes.draw do
 
   post '/save_meme', :to => "fmemes#create"
 
-  get '/fmemes/:id', :to => "fmemes#show"
+  get '/fmemes/:id', :to => "fmemes#show", :as => "show_meme"
 
   get '/fmemes', :to => "fmemes#index"
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
