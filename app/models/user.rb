@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :provider, :oauth_token, :oauth_expires_at, :uid, :profile_image
 	
   has_many :friends, dependent: :destroy
-  has_many :photos, through: :friends, dependent: :destroy
+  has_many :photos
   has_many :fmemes, dependent: :destroy
 
   def facebook
@@ -41,9 +41,9 @@ class User < ActiveRecord::Base
 				end
 				if myphotos_hash
 					inserts = []
-				    myphotos_hash.map { |d| inserts.push "(#{ActiveRecord::Base.sanitize(d["src_big"])}, #{ActiveRecord::Base.sanitize(d["owner"])}, #{ActiveRecord::Base.sanitize(Time.now.utc.to_s(:db))}, #{ActiveRecord::Base.sanitize(Time.now.utc.to_s(:db))})" }
+				    myphotos_hash.map { |d| inserts.push "(#{ActiveRecord::Base.sanitize(self.id)}, #{ActiveRecord::Base.sanitize(d["src_big"])}, #{ActiveRecord::Base.sanitize(d["owner"])}, #{ActiveRecord::Base.sanitize(Time.now.utc.to_s(:db))}, #{ActiveRecord::Base.sanitize(Time.now.utc.to_s(:db))})" }
 				    begin
-				    Photo.connection.execute "INSERT INTO photos (src, uid, created_at, updated_at) values #{inserts.join(", ")}"
+				    Photo.connection.execute "INSERT INTO photos (user_id, src, uid, created_at, updated_at) values #{inserts.join(", ")}"
 					rescue
 					end
 				end
@@ -59,9 +59,9 @@ class User < ActiveRecord::Base
 	  		g = self.facebook.fql_query("SELECT src_big,owner FROM photo WHERE aid IN (SELECT aid FROM album WHERE owner IN (SELECT uid2 FROM friend WHERE uid1=me() LIMIT 50 OFFSET #{var}) AND name='Profile Pictures')")
 			if g
 				inserts = []
-				g.map { |d| inserts.push "(#{ActiveRecord::Base.sanitize(d["src_big"])}, #{ActiveRecord::Base.sanitize(d["owner"])}, #{ActiveRecord::Base.sanitize(Time.now.utc.to_s(:db))}, #{ActiveRecord::Base.sanitize(Time.now.utc.to_s(:db))})" }
+				g.map { |d| inserts.push "(#{ActiveRecord::Base.sanitize(self.id)}, #{ActiveRecord::Base.sanitize(d["src_big"])}, #{ActiveRecord::Base.sanitize(d["owner"])}, #{ActiveRecord::Base.sanitize(Time.now.utc.to_s(:db))}, #{ActiveRecord::Base.sanitize(Time.now.utc.to_s(:db))})" }
 				begin
-				Photo.connection.execute "INSERT INTO photos (src, uid, created_at, updated_at) values #{inserts.join(", ")}"
+				Photo.connection.execute "INSERT INTO photos (user_id, src, uid, created_at, updated_at) values #{inserts.join(", ")}"
 				rescue
 				end
 			end
