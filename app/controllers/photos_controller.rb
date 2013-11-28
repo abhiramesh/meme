@@ -7,17 +7,17 @@ class PhotosController < ApplicationController
 
 	def index
 		@user = current_user
-		#if Delayed::Job.where(queue: "friends_" + @user.id.to_s).first
-		#	@myfriendphotos = Rails.cache.fetch("photolist111", :expires_in => 20.seconds) do
+		if Delayed::Job.where(queue: "friends_" + @user.id.to_s).first
+			@myfriendphotos = Rails.cache.fetch("photolist111#{@user.id.to_s}", :expires_in => 20.seconds) do
 				# @myphotos = Photo.where(uid: @user.uid)
 				@myfriendphotos = @user.photos
-		#	end
-		#else
-			#@myfriendphotos = Rails.cache.fetch("photolist222") do
+			end
+		else
+			@myfriendphotos = Rails.cache.fetch("photolist222#{@user.id.to_s}") do
 				# @myphotos = Photo.where(uid: @user.uid)
-			#	@myfriendphotos = @user.photos
-			#end
-		#end
+				@myfriendphotos = @user.photos
+			end
+		end
 		@myfriendphotos = @myfriendphotos.shuffle.paginate(:page => params[:page], :per_page => 30)
 		
 	end
