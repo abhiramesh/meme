@@ -27,7 +27,7 @@ class PhotosController < ApplicationController
 		@myfriendphotos = @user.photos
 
 		respond_to do |format|
-			if @myfriendphotos.count > 150
+			if @myfriendphotos.count > 300
 				format.js { render json: "yes" }
 			else
 				format.js { render json: "no" }
