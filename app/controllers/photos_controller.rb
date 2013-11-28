@@ -39,7 +39,7 @@ class PhotosController < ApplicationController
 	def search_results
 		if params["query"] && current_user.friends.find_by_name(params["query"])
 			@friend = current_user.friends.find_by_name(params["query"])
-			@friendphotos = @friend.photos
+			@friendphotos = @friend.photos.uniq!{|p| p.src}
 		else
 			redirect_to root_path
 		end

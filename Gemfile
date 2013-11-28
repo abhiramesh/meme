@@ -17,6 +17,7 @@ gem 'client_side_validations'
 gem 'will_paginate', '~> 3.0'
 gem "memcachier"
 gem 's3'
+#gem 'composite_primary_keys', '=3.1.0'
 
 
 # Gems used only for assets and not required
