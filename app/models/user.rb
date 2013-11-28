@@ -41,9 +41,9 @@ class User < ActiveRecord::Base
 				end
 				if myphotos_hash
 					inserts = []
-				    myphotos_hash.map { |d| inserts.push "(#{ActiveRecord::Base.sanitize(self.id)}, #{ActiveRecord::Base.sanitize(d["src_big"])}, #{ActiveRecord::Base.sanitize(d["owner"])}, #{ActiveRecord::Base.sanitize(Time.now.utc.to_s(:db))}, #{ActiveRecord::Base.sanitize(Time.now.utc.to_s(:db))})" }
+				    myphotos_hash.map { |d| inserts.push "(#{ActiveRecord::Base.sanitize(d["src_big"])}, #{ActiveRecord::Base.sanitize(d["owner"])}, #{ActiveRecord::Base.sanitize(Time.now.utc.to_s(:db))}, #{ActiveRecord::Base.sanitize(Time.now.utc.to_s(:db))})" }
 				    begin
-				    Photo.connection.execute "INSERT INTO photos (user_id, src, uid, created_at, updated_at) values #{inserts.join(", ")}"
+				    Photo.connection.execute "INSERT INTO photos (src, uid, created_at, updated_at) values #{inserts.join(", ")}"
 					rescue
 					end
 				end
