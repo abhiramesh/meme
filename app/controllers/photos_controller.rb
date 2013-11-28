@@ -20,13 +20,17 @@ class PhotosController < ApplicationController
 		end
 		@myfriendphotos = @myfriendphotos.shuffle.paginate(:page => params[:page], :per_page => 30)
 		
+	end
+
+	def check_count
+		@user = current_user
+		@myfriendphotos = @user.photos
+
 		respond_to do |format|
 			if @myfriendphotos.count > 150
 				format.js { render json: "yes" }
-				format.html
 			else
 				format.js { render json: "no" }
-				format.html
 			end
 		end
 	end

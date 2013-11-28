@@ -28,7 +28,7 @@ $(document).ready(function(){
 	function worker(){
 		$.ajax({
 			type: "GET",
-			url: '/all_photos',
+			url: '/check_count',
 			dataType: "json",
 			complete: function(response) {
 				var contains = (window.location.href.indexOf('#loaded') > -1);
