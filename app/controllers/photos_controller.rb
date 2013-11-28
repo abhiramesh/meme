@@ -7,13 +7,13 @@ class PhotosController < ApplicationController
 
 	def index
 		@user = current_user
-		if Delayed::Job.where(queue: "friends_" + @user.id.to_s)
-			@myfriendphotos = Rails.cache.fetch("photolist", :expires_in => 30.seconds) do
+		if Delayed::Job.where(queue: "friends_" + @user.id.to_s).first
+			@myfriendphotos = Rails.cache.fetch("photolist1", :expires_in => 20.seconds) do
 				# @myphotos = Photo.where(uid: @user.uid)
 				@myfriendphotos = @user.photos
 			end
 		else
-			@myfriendphotos = Rails.cache.fetch("photolistreal") do
+			@myfriendphotos = Rails.cache.fetch("photolist2") do
 				# @myphotos = Photo.where(uid: @user.uid)
 				@myfriendphotos = @user.photos
 			end
