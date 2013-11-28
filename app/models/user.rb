@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :provider, :oauth_token, :oauth_expires_at, :uid, :profile_image
 	
   has_many :friends, dependent: :destroy
-  has_many :photos, :foreign_key => :user_id, :primary_key => :user_id
+  has_many :photos
   has_many :fmemes, dependent: :destroy
 
   def facebook
